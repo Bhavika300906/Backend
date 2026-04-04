@@ -1,0 +1,33 @@
+'''
+print("Hello World")
+print("Bhavika Sonule")
+'''
+#STRING FUNCTION
+s = "Tops Technologies"
+print("Length of String is :", len(s))
+#print(s)
+print(s.capitalize())
+print(s.casefold())
+print(s.upper())
+print(s.lower())
+print(s.center(50,"#"))
+print(s.count("o"))
+print(s.endswith("ese"))
+print(s.startswith("To"))
+print(s.find("echno"))
+print(s.index("s",0))
+print("Tops123".isalnum())
+print("Tops".isalnum())
+print("123".isalnum())
+print("Tops 123".isalnum())
+print("Tips".isalpha())
+print("123".isnumeric())
+print(" ".isspace())
+print("".isspace())
+print("1".isspace())
+print(s.istitle())
+print("tops".islower())
+print("TOPS".islower())
+print("TOPS".isupper())
+print("Hello".replace("H","B"))
+
