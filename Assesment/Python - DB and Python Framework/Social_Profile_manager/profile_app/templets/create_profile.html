@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile</title>
+    <link rel="stylesheet" href="{% static 'profile_app/styles.css' %}?v=5">
+</head>
+
+<body>
+    <main class="page">
+        <nav class="topbar">
+            <div class="brand">
+                <span class="brand-mark">SP</span>
+                <span>Social Profiles</span>
+            </div>
+        </nav>
+
+        <section class="panel">
+            <div class="panel-header">
+                <div>
+                    <h1>Create User Profile</h1>
+                    <p class="subtitle">Add a profile and choose whether it should be public.</p>
+                </div>
+
+                <div class="actions">
+                    <a class="button secondary" href="{% url 'profile_list' %}">View Profiles</a>
+                </div>
+            </div>
+
+            <div class="content">
+                <form method="POST" class="form-grid">
+                    {% csrf_token %}
+
+                    {% if form.errors %}
+                    <div class="error-list">
+                        {{ form.errors }}
+                    </div>
+                    {% endif %}
+
+                    <div class="field">
+                        <label for="id_username">Username</label>
+                        <input type="text" id="id_username" name="username" value="{{ form.username.value|default:'' }}">
+                    </div>
+
+                    <div class="field">
+                        <label for="id_age">Age</label>
+                        <input type="number" id="id_age" name="age" value="{{ form.age.value|default:'' }}">
+                    </div>
+
+                    <label class="checkbox-field" for="id_is_public">
+                        <input type="checkbox" id="id_is_public" name="is_public" {% if form.is_public.value %}checked{% endif %}>
+                        Public Profile
+                    </label>
+
+                    <button type="submit">Save Profile</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>

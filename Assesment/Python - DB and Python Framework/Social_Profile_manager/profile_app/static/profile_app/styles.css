@@ -1,0 +1,380 @@
+:root {
+    --ink: #111827;
+    --muted: #6b7280;
+    --line: #e5e7eb;
+    --page: #f6f7fb;
+    --panel: #ffffff;
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --accent: #f97316;
+    --success-bg: #ecfdf5;
+    --success: #047857;
+    --danger-bg: #fff1f2;
+    --danger: #be123c;
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    color: var(--ink);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.16), transparent 34%),
+        linear-gradient(180deg, #ffffff 0, var(--page) 45%);
+}
+
+a {
+    color: inherit;
+}
+
+.page {
+    width: min(1040px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 28px 0 48px;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.brand-mark {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border-radius: 8px;
+    background: var(--ink);
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0.4px;
+}
+
+.panel {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--panel);
+    box-shadow: 0 20px 55px rgba(17, 24, 39, 0.10);
+}
+
+.panel-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 30px;
+    border-bottom: 1px solid var(--line);
+    background:
+        linear-gradient(90deg, rgba(37, 99, 235, 0.08), transparent 58%),
+        #ffffff;
+}
+
+h1 {
+    margin: 0;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: 0;
+}
+
+.subtitle {
+    max-width: 620px;
+    margin: 10px 0 0;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.button,
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 10px 18px;
+    background: var(--primary);
+    color: #ffffff;
+    font: inherit;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 10px 22px rgba(37, 99, 235, 0.22);
+}
+
+.button:hover,
+button:hover {
+    background: var(--primary-dark);
+}
+
+.button.secondary {
+    border-color: #d1d5db;
+    background: #ffffff;
+    color: var(--ink);
+    box-shadow: none;
+}
+
+.button.secondary:hover {
+    background: #f9fafb;
+}
+
+.button.small {
+    min-height: 34px;
+    padding: 7px 12px;
+    font-size: 13px;
+    box-shadow: none;
+}
+
+.button.danger,
+.danger-button {
+    background: var(--danger);
+    color: #ffffff;
+    box-shadow: none;
+}
+
+.button.danger:hover,
+.danger-button:hover {
+    background: #9f1239;
+}
+
+.content {
+    padding: 30px;
+}
+
+.profile-list {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.profile-card {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px 18px;
+    background: #ffffff;
+}
+
+.row-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.profile-card:hover {
+    border-color: #bfdbfe;
+    background: #f8fbff;
+}
+
+.avatar {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border-radius: 50%;
+    background: #dbeafe;
+    color: #1e40af;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.profile-name {
+    margin: 0 0 4px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.profile-meta {
+    margin: 0;
+    color: var(--muted);
+}
+
+.badge {
+    border-radius: 999px;
+    padding: 7px 12px;
+    background: var(--success-bg);
+    color: var(--success);
+    font-size: 13px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.badge.private {
+    background: var(--danger-bg);
+    color: var(--danger);
+}
+
+.empty-state {
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 36px;
+    text-align: center;
+    color: var(--muted);
+    background: #f9fafb;
+}
+
+.form-grid {
+    display: grid;
+    gap: 20px;
+    max-width: 650px;
+}
+
+.field {
+    display: grid;
+    gap: 8px;
+}
+
+label {
+    color: #374151;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    height: 48px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 0 14px;
+    background: #ffffff;
+    color: var(--ink);
+    font: inherit;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.14);
+    outline: none;
+}
+
+.checkbox-field {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 14px;
+    background: #f9fafb;
+}
+
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+}
+
+.error-list {
+    margin: 0;
+    border: 1px solid #fecdd3;
+    border-radius: 8px;
+    padding: 14px 16px;
+    background: var(--danger-bg);
+    color: var(--danger);
+}
+
+.confirm-box {
+    max-width: 620px;
+    border: 1px solid #fecdd3;
+    border-radius: 8px;
+    padding: 22px;
+    background: var(--danger-bg);
+}
+
+.confirm-title {
+    margin: 0 0 8px;
+    color: var(--danger);
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.confirm-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+@media (max-width: 720px) {
+    .page {
+        width: min(100% - 20px, 1040px);
+        padding: 18px 0 32px;
+    }
+
+    .topbar,
+    .panel-header {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        align-items: flex-start;
+    }
+
+    .panel-header,
+    .content {
+        padding: 22px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    .actions,
+    .button,
+    button {
+        width: 100%;
+    }
+
+    .profile-card {
+        grid-template-columns: 44px 1fr;
+    }
+
+    .avatar {
+        width: 44px;
+        height: 44px;
+    }
+
+    .badge {
+        grid-column: 1 / -1;
+        width: fit-content;
+    }
+
+    .row-actions {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+    }
+
+    .confirm-actions {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Profiles</title>
+    <link rel="stylesheet" href="{% static 'profile_app/styles.css' %}?v=5">
+</head>
+
+<body>
+    <main class="page">
+        <nav class="topbar">
+            <div class="brand">
+                <span class="brand-mark">SP</span>
+                <span>Social Profiles</span>
+            </div>
+        </nav>
+
+        <section class="panel">
+            <div class="panel-header">
+                <div>
+                    <h1>Social Profile Dashboard</h1>
+                    <p class="subtitle">Manage saved user profile details.</p>
+                </div>
+
+                <div class="actions">
+                    <a class="button secondary" href="{% url 'create_profile' %}">Create Profile</a>
+                    <a class="button" href="{% url 'export_profiles' %}">Export CSV</a>
+                </div>
+            </div>
+
+            <div class="content">
+                {% if profiles %}
+                <ul class="profile-list">
+                    {% for profile in profiles %}
+                    <li class="profile-card">
+                        <span class="avatar">{{ profile.username|first }}</span>
+                        <div>
+                            <p class="profile-name">{{ profile.username }}</p>
+                            <p class="profile-meta">Age: {{ profile.age }}</p>
+                        </div>
+                        <div class="row-actions">
+                            {% if profile.is_public %}
+                            <span class="badge">Public</span>
+                            {% else %}
+                            <span class="badge private">Private</span>
+                            {% endif %}
+                            <a class="button small secondary" href="{% url 'update_profile' profile.id %}">Edit</a>
+                            <a class="button small danger" href="{% url 'delete_profile' profile.id %}">Delete</a>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <div class="empty-state">
+                    No profiles yet. Create your first profile to see it here.
+                </div>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
