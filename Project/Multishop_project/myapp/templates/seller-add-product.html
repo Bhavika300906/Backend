@@ -1,0 +1,87 @@
+{% extends 'seller-header.html' %}
+
+{% load static %}
+
+{% block content%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="/">Home</a>
+                    <span class="breadcrumb-item active">Add Product</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- Contact Start -->
+    <div class="container-fluid">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Add
+                Product</span></h2>
+        <div class="row px-xl-5">
+            <div class="col-lg-12 mb-5">
+                <div class="contact-form bg-light p-30">
+                    <div id="success"></div>
+                    {% if msg %}
+                    <b style="color: blue;">{{msg}}</b>
+                    {% endif %}
+                    <form name="sentMessage" method="POST" action="{% url 'seller-add-product'%}"
+                        enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="control-group">
+                            <select name="product_category" class="form-control" id="name" required>
+                                <option value="">-----SELECT Product Category----</option>
+                                <option value="Men">Men</option>
+                                <option value="Women">Women</option>
+                                <option value="Kids">Kids</option>
+                                <option value="Others">Others</option>
+                            </select>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control" id="name" placeholder=" Product Name"
+                                required="required" name="product_name" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control" id="name" placeholder=" Price" required="required"
+                                name="product_price" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <textarea type="text" class="form-control" id="name" placeholder="Description"
+                                required="required" name="product_decs"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="file" class="form-control" id="name" name="product_image" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div>
+                            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Add
+                                Product</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+</body>
+
+</html>
+{% endblock %}

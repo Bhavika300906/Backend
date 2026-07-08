@@ -1,0 +1,78 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block content%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="/">Home</a>
+
+                    <span class="breadcrumb-item active">Product Detail</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Shop Detail Start -->
+    <div class="container-fluid pb-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-5 mb-30">
+                <div id="product-carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner bg-light">
+                        <div class="carousel-item active">
+                            <img class="w-100 h-100" src="{{product.product_image.url}}" alt="Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 h-auto mb-30">
+                <div class="h-100 bg-light p-30">
+                    <h3>{{product.product_name}}</h3>
+
+                    <h3 class="font-weight-semi-bold mb-4">₹ {{product.product_price}}</h3>
+                    <p class="mb-4">{{product.product_decs}}</p>
+                    <div class="d-flex align-items-center mb-4 pt-2">
+                        {% if request.session.email %} 
+                        {% if cart_flag == False %}
+                        <a href="{% url 'add-to-cart' pk=product.pk %}"><button class="btn btn-primary px-5"></i>
+                                Add to Cart </button></a> &nbsp;
+                        {% else %}
+                        <a href="{% url 'remove-from-cart' pk=product.pk %}"><button
+                                class="btn btn-primary px-5"></i> Remove from Cart </button></a> &nbsp;
+                        {% endif %}
+                        {% if wishlist_flag == False %}
+                        <a href="{% url 'add-to-wishlist' pk=product.pk %}"><button class="btn btn-primary px-5"></i>
+                                Add to Wishlist </button></a> &nbsp;
+                        {% else %}
+                        <a href="{% url 'remove-from-wishlist' pk=product.pk %}"><button
+                                class="btn btn-primary px-5"></i> Remove from Wishlist </button></a> &nbsp;
+                        {% endif %}
+                        {% else %}
+                        <a href="{% url 'login' %}"><button class="btn btn-primary px-5"></i>Login</button></a>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Shop Detail End -->
+
+</body>
+
+</html>
+{% endblock %}

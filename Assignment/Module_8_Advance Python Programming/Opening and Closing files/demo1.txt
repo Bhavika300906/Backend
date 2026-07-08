@@ -1,0 +1,2 @@
+This is file management using Python. 
+ This text file is created in writing mode..

@@ -1,0 +1,94 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block content%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="/">Home</a>
+                    <a class="breadcrumb-item text-dark" href="#">Shop</a>
+                    <span class="breadcrumb-item active">Shop List</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- Shop Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <!-- Shop Sidebar Start -->
+            <div class="col-lg-3 col-md-4">
+                <!-- Price Start -->
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter
+                        by Category</span></h5>
+                <div class="bg-light p-4 mb-30">
+
+                    <a href="{% url 'category' cat='all' %}" style="color: blue;">All Categories</a><br>
+                    <a href="{% url 'category' cat='Men' %}" style="color: blue;">Men</a><br>
+                    <a href="{% url 'category' cat='Women' %}" style="color: blue;">Women</a><br>
+                    <a href="{% url 'category' cat='Kids' %}" style="color: blue;">Kids</a><br>
+                    <a href="{% url 'category' cat='Others' %}" style="color: blue;">Others</a><br>
+
+                </div>
+                <!-- Price End -->
+            </div>
+            <!-- Shop Sidebar End -->
+
+
+            <!-- Shop Product Start -->
+            <div class="col-lg-9 col-md-8">
+                <div class="row pb-3">
+                    {% for i in products %}
+                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                        <div class="product-item bg-light mb-4">
+                            <div class="product-img position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="{{i.product_image.url}}" alt=""
+                                    style="width: 250px; height: 250px;">
+                                <div class="product-action">
+                                    {% if request.session.email %}
+                                    <a class="btn btn-outline-dark btn-square" href=""><i
+                                            class="fa fa-shopping-cart"></i></a>
+                                    <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+                                    {% endif %}
+                                    <a class="btn btn-outline-dark btn-square"
+                                        href="{% url 'product-details' pk=i.pk %}"><i class="fa fa-info"></i></a>
+
+                                </div>
+                            </div>
+                            <div class="text-center py-4">
+                                <a class="h6 text-decoration-none text-truncate" href="">{{i.product_name}}</a>
+                                <div class="d-flex align-items-center justify-content-center mt-2">
+                                    <h5>₹ {{i.product_price}}</h5>
+                                    <h6 class="text-muted ml-2"></h6>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- Shop Product End -->
+        </div>
+    </div>
+    <!-- Shop End -->
+
+</body>
+
+</html>
+{% endblock %}
