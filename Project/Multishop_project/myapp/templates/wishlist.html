@@ -48,7 +48,7 @@
                                     style="width: 250px; height: 250px;">
                                 <div class="product-action">
                                     {% if request.session.email %}
-                                    <a class="btn btn-outline-dark btn-square" href=""><i
+                                    <a class="btn btn-outline-dark btn-square" href="{% url 'add-to-cart' pk=i.product.pk %}"><i
                                             class="fa fa-shopping-cart"></i></a>
                                     <a class="btn btn-outline-dark btn-square"
                                         href="{% url 'remove-from-wishlist' pk=i.product.pk %}"><i class="far fa-heart"></i></a>
@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="text-center py-4">
-                                <a class="h6 text-decoration-none text-truncate" href="">{{i.product.product_name}}</a>
+                                <a class="h6 text-decoration-none text-truncate" href="{% url 'product-details' pk=i.product.pk %}">{{i.product.product_name}}</a>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
                                     <h5>₹ {{i.product.product_price}}</h5>
                                     <h6 class="text-muted ml-2"></h6>

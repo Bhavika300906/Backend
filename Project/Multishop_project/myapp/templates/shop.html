@@ -61,9 +61,10 @@
                                     style="width: 250px; height: 250px;">
                                 <div class="product-action">
                                     {% if request.session.email %}
-                                    <a class="btn btn-outline-dark btn-square" href=""><i
+                                    <a class="btn btn-outline-dark btn-square" href="{% url 'add-to-cart' pk=i.pk %}"><i
                                             class="fa fa-shopping-cart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+                                    <a class="btn btn-outline-dark btn-square"
+                                        href="{% url 'add-to-wishlist' pk=i.pk %}"><i class="far fa-heart"></i></a>
                                     {% endif %}
                                     <a class="btn btn-outline-dark btn-square"
                                         href="{% url 'product-details' pk=i.pk %}"><i class="fa fa-info"></i></a>
@@ -71,7 +72,8 @@
                                 </div>
                             </div>
                             <div class="text-center py-4">
-                                <a class="h6 text-decoration-none text-truncate" href="">{{i.product_name}}</a>
+                                <a class="h6 text-decoration-none text-truncate"
+                                    href="{% url 'product-details' pk=i.pk %}">{{i.product_name}}</a>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
                                     <h5>₹ {{i.product_price}}</h5>
                                     <h6 class="text-muted ml-2"></h6>

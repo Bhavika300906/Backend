@@ -335,27 +335,26 @@ def remove_from_wishlist(request,pk):
 def add_to_cart(request,pk):
     product=Product.objects.get(pk=pk)
     user=User.objects.get(email=request.session['email'])
-    Cart.objects.get_or_create(user=user,product=product,defaults={
+    Cart.objects.get_or_create(user=user,product=product,payment_status=False,defaults={
         'product_price':product.product_price,
         'product_qty':1,
         'total_price':product.product_price,
-        'payment_status':False,
     })
     return redirect('cart')
 
 def cart(request):
+    net_price=0
     user=User.objects.get(email=request.session['email'])
     carts=Cart.objects.filter(user=user,payment_status=False)
-    request.session['cart_count']=len(carts)
-    net_price=0
     for i in carts:
         net_price=net_price+i.total_price
+    request.session['cart_count']=len(carts)
     return render(request,'cart.html',{'carts':carts,'net_price':net_price})
 
 def remove_from_cart(request,pk):
     product=Product.objects.get(pk=pk)
     user=User.objects.get(email=request.session['email'])
-    cart=Cart.objects.filter(user=user,product=product)
+    cart=Cart.objects.filter(user=user,product=product,payment_status=False)
     cart.delete()
     return redirect('cart')
 
